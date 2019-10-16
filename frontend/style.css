@@ -1,0 +1,23 @@
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.instagram {
+  /* float: left; */
+  width: 50%;
+  padding: 5px;
+}
+
+.twitter {
+  /* float: left; */
+  flex-grow: 1;
+  /* padding: 5px; */
+}
+
+/* Clear floats after image containers */
+.social_media {
+  display: flex;
+}
