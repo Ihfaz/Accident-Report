@@ -29,30 +29,44 @@
       </div>
       <div class="summary">
         <h1>Summary</h1>
-        <h3>*news summary*</h3>
+        {% if summary %}
+          {{ summary }}
+        {% endif %}
         </div>
       <hr />
       <!-- Row containing the images from IG and tweets from twitter -->
       <div class="social_media">
-        <div class="instagram">
-          <img
-            class="head-logo"
-            src="{{ url_for("static", filename="assets/insta_demo.jpg") }}"
-            alt="insta"
-            height="400"
-            width="600"
-          />
+        <div class="instagram"
+          height="400"
+          width="600">
+          {% if i_file %}
+            <img
+              class="head-logo"
+              src="{{ url_for('static', filename=i_file) }}"
+              alt="insta"
+              
+            />
+          {% else %}
+            <h3>No images found</h3>
+          {% endif %}
+          
         </div>
-        <div class="twitter">
-          <!-- <img
-            class="head-logo"
-            src="./assets/twitter_demo.jpg"
-            alt="logo"
-            height="400"
-            width="600"
-          /> -->
-
-          <blockquote class="twitter-tweet" data-width="550"><p lang="en" dir="ltr">Get Tesla Solar plus Powerwall battery for 24/7 clean power &amp; no more blackouts! <a href="https://t.co/mDoPO17YB9">https://t.co/mDoPO17YB9</a></p>&mdash; Elon Musk (@elonmusk) <a href="https://twitter.com/elonmusk/status/1182812717083611138?ref_src=twsrc%5Etfw">October 12, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+        <div class="twitter" 
+          height="400"
+          width="600">
+          {% if t_content %}
+            <!-- <img
+              class="head-logo"
+              src="{{ url_for('static', filename=t_file) }}"
+              alt="insta"
+              
+            /> -->
+            
+            {{ t_content }}
+          {% else %}
+            <h3>No content found</h3>
+          {% endif %}
+ 
         </div>
       </div>
     </section>
