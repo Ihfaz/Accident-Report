@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}" />
     <title>Accident Report</title>
   </head>
-  <body style="background-color: beige;>
+  <body style="background-color: beige">
     <section class="header">
       <div class="main_body">
         <img
           class="logo"
-          src="./assets/accrep.JPG"
+          src="{{ url_for("static", filename="assets/accrep.JPG") }}"
           alt="logo"
           height="100"
           width="800" 
@@ -30,15 +30,15 @@
       <div class="summary">
         <h1>Summary</h1>
         <h3>*news summary*</h3>
-      </div>
+        </div>
       <hr />
       <!-- Row containing the images from IG and tweets from twitter -->
       <div class="social_media">
         <div class="instagram">
           <img
             class="head-logo"
-            src="./assets/insta_demo.jpg"
-            alt="logo"
+            src="{{ url_for("static", filename="assets/insta_demo.jpg") }}"
+            alt="insta"
             height="400"
             width="600"
           />
