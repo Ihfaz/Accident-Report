@@ -1,7 +1,7 @@
 # url_for -- searches for a file in a folder like templates/static
 # Markup -- converts strings to HTML tags
 
-from flask import Flask, render_template, url_for, Markup, flash, redirect
+from flask import Flask, render_template, url_for, Markup, flash, redirect, request, Response
 from forms import RegistrationForm, LoginForm
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ def report():
     dfw_accident = '<blockquote class="twitter-tweet"><p lang="en" dir="ltr">CLEARED - accident:I-30 westbound IH35E Dallas various Lns blocked</p>&mdash; 511DFW_Dallas (@511DFWDallas) <a href="https://twitter.com/511DFWDallas/status/1188683916070313984?ref_src=twsrc%5Etfw">October 28, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
     
     # twitter_embed = 
-    t_content = Markup(dfw_accident)  
+    t_content = Markup(tesla_solar)  
     summary = Markup('<p>*Summary about recent accident*</p>')    # Summary content
 
     return render_template('report_layout.html', i_file=i_file, t_content=t_content, summary=summary)
@@ -55,6 +55,12 @@ def login():
 
     return render_template('login.html', title='Login', form=form)
 
+
+@app.route('/upload')
+def upload_data():
+    data = request.args.get('data')
+    print(data)
+    return Response(200)
 
 if __name__ == '__main__':
     app.run(debug=True)
