@@ -11,7 +11,7 @@ app.config['SECRET_KEY'] = 'b924439ea2514672da218f4a7fba3f0e'
 @app.route("/")
 @app.route("/report")
 def report():
-    i_file = 'assets/insta_demo.jpg'    # Instagram content
+    i_content = 'assets/insta_demo.jpg'    # Instagram content
     
     # Twitter content
 
@@ -24,7 +24,7 @@ def report():
     t_content = Markup(tesla_solar)  
     summary = Markup('<p>*Summary about recent accident*</p>')    # Summary content
 
-    return render_template('report_layout.html', i_file=i_file, t_content=t_content, summary=summary)
+    return render_template('report_layout.html', i_content=i_content, t_content=t_content, summary=summary)
 
 
 @app.route("/search")

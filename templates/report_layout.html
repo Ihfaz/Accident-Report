@@ -39,15 +39,15 @@
         <div class="instagram"
           height="400"
           width="600">
-          {% if i_file %}
+          {% if i_content %}
             <img
               class="head-logo"
-              src="{{ url_for('static', filename=i_file) }}"
+              src="{{ url_for('static', filename=i_content) }}"
               alt="insta"
               
             />
           {% else %}
-            <h3>No images found</h3>
+            <h3>No content found</h3>
           {% endif %}
           
         </div>
@@ -55,13 +55,6 @@
           height="400"
           width="600">
           {% if t_content %}
-            <!-- <img
-              class="head-logo"
-              src="{{ url_for('static', filename=t_file) }}"
-              alt="insta"
-              
-            /> -->
-
             {{ t_content }}
           {% else %}
             <h3>No content found</h3>
