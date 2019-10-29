@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
     <title>Accident Report</title>
   </head>
-  <body style="background-color: beige">
+  <body style="background-color: beige;">
     <section class="header">
       <div class="main_body">
         <img
           class="logo"
-          src="{{ url_for("static", filename="assets/accrep.JPG") }}"
+          src="{{ url_for('static', filename='assets/accrep.JPG') }}"
           alt="logo"
           height="100"
           width="800" 
@@ -61,7 +61,7 @@
               alt="insta"
               
             /> -->
-            
+
             {{ t_content }}
           {% else %}
             <h3>No content found</h3>
