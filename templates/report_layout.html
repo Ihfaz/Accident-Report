@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}" />
+    <title>Accident Report</title>
+  </head>
+  <body style="background-color: beige">
+    <section class="header">
+      <div class="main_body">
+        <img
+          class="logo"
+          src="{{ url_for("static", filename="assets/accrep.JPG") }}"
+          alt="logo"
+          height="100"
+          width="800" 
+        />
+        <div class="update">
+          <h2>News Update</h2>
+          <p>*incoming news from Facebook API*</p>
+        </div>
+      </div>
+      <hr />
+      <div class="recent">
+        <h1>Recent News</h1>
+        <button>Go to location</button>
+      </div>
+      <div class="summary">
+        <h1>Summary</h1>
+        {% if summary %}
+          {{ summary }}
+        {% endif %}
+        </div>
+      <hr />
+      <!-- Row containing the images from IG and tweets from twitter -->
+      <div class="social_media">
+        <div class="instagram"
+          height="400"
+          width="600">
+          {% if i_file %}
+            <img
+              class="head-logo"
+              src="{{ url_for('static', filename=i_file) }}"
+              alt="insta"
+              
+            />
+          {% else %}
+            <h3>No images found</h3>
+          {% endif %}
+          
+        </div>
+        <div class="twitter" 
+          height="400"
+          width="600">
+          {% if t_content %}
+            <!-- <img
+              class="head-logo"
+              src="{{ url_for('static', filename=t_file) }}"
+              alt="insta"
+              
+            /> -->
+            
+            {{ t_content }}
+          {% else %}
+            <h3>No content found</h3>
+          {% endif %}
+ 
+        </div>
+      </div>
+    </section>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

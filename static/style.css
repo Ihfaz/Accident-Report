@@ -5,16 +5,15 @@
   width: 50%;
 }
 
+/* Aligning data from instagram and twitter */
 .instagram {
-  /* float: left; */
-  width: 50%;
-  padding: 5px;
+  width: 60%;
+  padding: 15px;
 }
 
 .twitter {
-  /* float: left; */
   flex-grow: 1;
-  /* padding: 5px; */
+  padding: 15px;
 }
 
 /* Clear floats after image containers */
