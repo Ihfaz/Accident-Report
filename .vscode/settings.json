@@ -1,6 +1,6 @@
 {
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true,
-    "python.pythonPath": "/usr/bin/python3",
+    "python.linting.enabled": false,
+    "python.pythonPath": "C:\\Users\\Zunayed Siddiqui\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
     "python.linting.flake8Enabled": false
 }
