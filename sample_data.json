@@ -1,0 +1,44 @@
+{
+  "id": "1234",
+  "summary": "Some summary",
+  "type_of_injury": "Severe",
+  "num_people_affected": 3,
+  "reported_locations": ["Lagos", "Lagos-Ibadan expy"],
+  "occur_time": "1620",
+  "related_tweets": [
+    {
+      "username":"ihfaz98",
+      "message": "Accident",
+      "relevancy_score": 0.0,
+      "key_terms": ["a", "b", "c"]
+
+    },
+    {
+      "username":"zunayed98",
+      "message": "Crash",
+      "relevancy_score": 1.0,
+      "key_terms": ["a", "d", "c"]
+
+    }
+
+  ],
+
+  "instagram_posts": [
+    {
+      "username": "ihfaz98",
+      "relevancy_socre": 0.0,
+      "images": [
+        {
+          "image_url": "",
+          "caption": "Image caption 1"
+        },
+        {
+          "image_url": "",
+          "caption": "Image caption 2"
+        }
+      ],
+      "key_terms": ["s", "d"]
+    }
+  ]
+
+}

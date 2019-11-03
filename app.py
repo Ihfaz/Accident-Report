@@ -56,11 +56,18 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
-@app.route('/upload')
+@app.route('/upload', methods=['POST'])
 def upload_data():
     data = request.args.get('data')
-    print(data)
-    return Response(200)
+    # data = request.get_json('data')
+    process_data(data)
+    return f"<h1>DATA = {data}</h1>"
+    # return Response(200)
+
+
+def process_data(data):
+    print(data['id'])
+
 
 if __name__ == '__main__':
     app.run(debug=True)
