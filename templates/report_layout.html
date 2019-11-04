@@ -36,9 +36,7 @@
       <hr />
       <!-- Row containing the images from IG and tweets from twitter -->
       <div class="social_media">
-        <div class="instagram"
-          height="400"
-          width="600">
+        <div class="instagram">
           {% if i_content %}
             <img
               class="head-logo"
@@ -51,14 +49,14 @@
           {% endif %}
           
         </div>
-        <div class="twitter" 
-          height="400"
-          width="600">
-          {% if t_content %}
-            {{ t_content }}
-          {% else %}
-            <h3>No content found</h3>
-          {% endif %}
+        <div class="twitter">
+
+          {% for tweet in tweets %}
+            <h2>{{ tweet.username }}</h2>
+            <p>{{ tweet.message }}</p>
+            <hr />
+            <br />
+          {% endfor %}
  
         </div>
       </div>

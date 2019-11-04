@@ -7,16 +7,28 @@
 
 /* Aligning data from instagram and twitter */
 .instagram {
-  width: 60%;
+  width: wrap-content;
+  height: 100%;
+  background-color: white;
   padding: 15px;
+  margin-right: 15px;
+  overflow-y: auto;
 }
 
 .twitter {
   flex-grow: 1;
+  width: wrap-content;
+  height: 100%;
+  background-color: white;
   padding: 15px;
+  margin-left: 15px;
+  overflow-y: auto;
 }
 
 /* Clear floats after image containers */
 .social_media {
   display: flex;
+  height: 500px;
+  width: 98%;
+  padding: 5px;
 }

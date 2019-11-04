@@ -8,14 +8,14 @@
   "related_tweets": [
     {
       "username":"ihfaz98",
-      "message": "Accident",
+      "message": "Accident on I-35 highway. Police have arrived on site.",
       "relevancy_score": 0.0,
       "key_terms": ["a", "b", "c"]
 
     },
     {
       "username":"zunayed98",
-      "message": "Crash",
+      "message": "Car crash on highway. Seems like 4 people were injured.",
       "relevancy_score": 1.0,
       "key_terms": ["a", "d", "c"]
 
@@ -26,7 +26,7 @@
   "instagram_posts": [
     {
       "username": "ihfaz98",
-      "relevancy_socre": 0.0,
+      "relevancy_score": 0.0,
       "images": [
         {
           "image_url": "",
