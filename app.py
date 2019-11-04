@@ -130,8 +130,8 @@ def login():
 
 @app.route('/upload', methods=['POST'])
 def upload_data():
-    data = request.args.get('data')
-    # data = request.get_json('data')
+    # data = request.args.get('data')
+    data = request.get_json('data')
     process_data(data)
     return f"<h1>DATA = {data}</h1>"
     # return Response(200)
