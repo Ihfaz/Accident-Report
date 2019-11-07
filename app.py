@@ -32,6 +32,9 @@ def report():
     
     # TODO -- pull this data from DB
     data = accident.find_one()
+    if data is None:
+        return "<h1>Error 404: Content Not Found</h1>"
+    
     #  {
     #         "id": "",
     #         "summary": "Accident involving 3 vehiles and 6 people injured.",

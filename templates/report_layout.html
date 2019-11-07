@@ -42,6 +42,8 @@
       <!-- Row containing the images from IG and tweets from twitter -->
       <div class="social_media">
         <div class="instagram">
+          <h1>Instagram Posts</h1>
+          <hr />
           {% for ig in insta %}
           <h3>{{ ig.username }}</h3>
           {% for image in ig.images %}
@@ -65,10 +67,11 @@
           {% endif %} -->
         </div>
         <div class="twitter">
-          {% for tweet in tweets %}
-          <h2>{{ tweet.username }}</h2>
-          <p>{{ tweet.message }}</p>
+          <h1>Tweets</h1>
           <hr />
+          {% for tweet in tweets %}
+          <h3>{{ tweet.username }}</h3>
+          <p>{{ tweet.message }}</p>
           <br />
           {% endfor %}
         </div>
