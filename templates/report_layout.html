@@ -25,18 +25,16 @@
       <hr />
       <div class="location">
         <h1>Location</h1>
-        <button
-          name="bLocation"
-          onclick="window.open('https://www.latlong.net/c/?lat=6.466437&long=3.564418');"
-        >
-          Go to location
-        </button>
+        {% if loc_link %}
+          <button name="bLocation" onclick="{{ loc_link }}">Go to location</button>
+        {% endif %}
       </div>
       <div class="summary">
         <h1>Summary</h1>
         {% if summary %}
-        <p>{{ summary }}</p>
+        <p class="summary-content">{{ summary }}</p>
         {% endif %}
+        <br />
       </div>
       <hr />
       <!-- Row containing the images from IG and tweets from twitter -->

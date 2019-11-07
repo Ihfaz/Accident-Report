@@ -5,7 +5,7 @@
   width: 50%;
 }
 
-.summary {
+.summary-content {
   white-space: pre-line;
 }
 
@@ -21,7 +21,7 @@
 
 .twitter {
   flex-grow: 1;
-  width: wrap-content;
+  width: 50%;
   height: 100%;
   background-color: white;
   padding: 15px;

@@ -88,8 +88,9 @@ def report():
     insta = sorted(data['instagram_posts'], key=lambda k: k['relevancy_score'], reverse=True)   # Sort insta posts according to relevancy
       
     summary = data['summary']+"\nType of injury: "+data['type_of_injury']+"\nNumber of people affected: "+str(data['num_people_affected'])+"\nTime of occurence: "+data['occur_time']    # Summary content
-    # print(summary)
-    return render_template('report_layout.html', insta=insta, tweets=tweets, summary=summary, i_content=i_content)
+    loc_link = f"window.open('https://www.latlong.net/c/?lat={data['geolocation']['latitude']}&long={data['geolocation']['longitude']}');"
+
+    return render_template('report_layout.html', insta=insta, tweets=tweets, summary=summary, i_content=i_content, loc_link=loc_link)
 
 
 @app.route("/search")
