@@ -30,14 +30,25 @@
       <div class="summary">
         <h1>Summary</h1>
         {% if summary %}
-          {{ summary }}
+          <p>{{ summary }}</p>
         {% endif %}
         </div>
       <hr />
       <!-- Row containing the images from IG and tweets from twitter -->
       <div class="social_media">
         <div class="instagram">
-          {% if i_content %}
+          {% for ig in insta %}
+            <h3>{{ ig.username }}</h3>
+            {% for image in ig.images %}
+              <img 
+              class="ig-post"
+              src="{{ image.image_url }}"
+              alt="insta"
+              />
+              <p>{{ image.caption }}</p>
+            {% endfor %}
+          {% endfor %}
+          <!-- {% if i_content %}
             <img
               class="head-logo"
               src="{{ url_for('static', filename=i_content) }}"
@@ -46,7 +57,7 @@
             />
           {% else %}
             <h3>No content found</h3>
-          {% endif %}
+          {% endif %} -->
           
         </div>
         <div class="twitter">

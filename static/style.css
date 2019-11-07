@@ -5,6 +5,10 @@
   width: 50%;
 }
 
+.summary {
+  white-space: pre-line;
+}
+
 /* Aligning data from instagram and twitter */
 .instagram {
   width: wrap-content;

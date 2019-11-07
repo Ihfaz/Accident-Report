@@ -11,92 +11,74 @@ app.config['SECRET_KEY'] = 'b924439ea2514672da218f4a7fba3f0e'
 @app.route("/")
 @app.route("/report")
 def report():
-    i_content = 'assets/insta_demo.jpg'    # Instagram content
+    # i_content = 'assets/insta_demo.jpg'    # Instagram content
     
     # Twitter content
 
     # Tesla tweet --
-    tesla_solar = '<blockquote class="twitter-tweet" data-width="550"><p lang="en" dir="ltr">Get Tesla Solar plus Powerwall battery for 24/7 clean power &amp; no more blackouts! <a href="https://t.co/mDoPO17YB9">https://t.co/mDoPO17YB9</a></p>&mdash; Elon Musk (@elonmusk) <a href="https://twitter.com/elonmusk/status/1182812717083611138?ref_src=twsrc%5Etfw">October 12, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
-    # DFW Accident --
-    dfw_accident = '<blockquote class="twitter-tweet"><p lang="en" dir="ltr">CLEARED - accident:I-30 westbound IH35E Dallas various Lns blocked</p>&mdash; 511DFW_Dallas (@511DFWDallas) <a href="https://twitter.com/511DFWDallas/status/1188683916070313984?ref_src=twsrc%5Etfw">October 28, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
+    # tesla_solar = '<blockquote class="twitter-tweet" data-width="550"><p lang="en" dir="ltr">Get Tesla Solar plus Powerwall battery for 24/7 clean power &amp; no more blackouts! <a href="https://t.co/mDoPO17YB9">https://t.co/mDoPO17YB9</a></p>&mdash; Elon Musk (@elonmusk) <a href="https://twitter.com/elonmusk/status/1182812717083611138?ref_src=twsrc%5Etfw">October 12, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
+    # # DFW Accident --
+    # dfw_accident = '<blockquote class="twitter-tweet"><p lang="en" dir="ltr">CLEARED - accident:I-30 westbound IH35E Dallas various Lns blocked</p>&mdash; 511DFW_Dallas (@511DFWDallas) <a href="https://twitter.com/511DFWDallas/status/1188683916070313984?ref_src=twsrc%5Etfw">October 28, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
     # # twitter_embed = 
     # t_content = Markup(tesla_solar)
     
     
     # TODO -- pull this data from DB
     data = {
-            "id": "1234",
-            "summary": "Some summary",
-            "type_of_injury": "Severe",
+            "id": "",
+            "summary": "Accident involving 3 vehiles and 6 people injured.",
+            "type_of_injury": "head",
             "num_people_affected": 3,
-            "reported_locations": ["Lagos", "Lagos-Ibadan expy"],
-            "occur_time": "1620",
+            "reported_locations": ["Lagos", "Ajah", "Otedola Bridge"],
+            "occur_time": "2019-10-28 23:50:01",
+            "geolocation": {
+                "latitude": 6.466437,
+                "longitude":  3.564418
+            },
+
             "related_tweets": [
                 {
-                    "username":"ihfaz98",
-                    "message": "Accident on I-35 highway. Police have arrived on site.",
-                    "relevancy_score": 0.0,
-                    "key_terms": ["a", "b", "c"]
+                "username":"lagostraffic",
+                "message": "Just in: There has been a multiple accident involving 3 vehicles at Mega Chicken, Ajah. LCC Patrol Officers are at… https://t.co/zmPw8NSeGw",
+                "relevancy_score": 0.9,
+                "key_terms": ["3 vehicles", "Mega Chicken", "Ajah"]
+
                 },
                 {
-                    "username":"zunayed98",
-                    "message": "Car crash on highway. Seems like 4 people were injured.",
-                    "relevancy_score": 1.0,
-                    "key_terms": ["a", "d", "c"]
-                },
-                {
-                    "username":"zunayed98",
-                    "message": "Car crash on highway. Seems like 4 people were injured.",
-                    "relevancy_score": 1.0,
-                    "key_terms": ["a", "d", "c"]
-                },
-                {
-                    "username":"zunayed98",
-                    "message": "Car crash on highway. Seems like 4 people were injured.",
-                    "relevancy_score": 1.0,
-                    "key_terms": ["a", "d", "c"]
-                },
-                {
-                    "username":"zunayed98",
-                    "message": "Car crash on highway. Seems like 4 people were injured.",
-                    "relevancy_score": 1.0,
-                    "key_terms": ["a", "d", "c"]
-                },
-                {
-                    "username":"zunayed98",
-                    "message": "Car crash on highway. Seems like 4 people were injured.",
-                    "relevancy_score": 1.0,
-                    "key_terms": ["a", "d", "c"]
+                "username":"lagos_help",
+                "message": "Many trapped in multiple accident on Otedola bridge, Lagos #MercyXDencia Naira Marley #TachaXTitans Riri… https://t.co/afQg3gxf7m",
+                "relevancy_score": 0.6,
+                "key_terms": ["Otedola bridge"]
+
                 }
 
             ],
 
             "instagram_posts": [
                 {
-                    "username": "ihfaz98",
-                    "relevancy_score": 0.0,
-                    "images": [
-                        {
-                        "image_url": "",
-                        "caption": "Image caption 1"
-                        },
-                        {
-                        "image_url": "",
-                        "caption": "Image caption 2"
-                        }
-                    ],
-                    "key_terms": ["s", "d"]
+                "username": "xtrovertee",
+                "relevancy_score": 0.5,
+                "images": [
+                    {
+                    "image_url": "https://www.instagram.com/p/B3_YQpugcao/",
+                    "caption": "So sad  #otedolabridge #lagosaccident #Lagos"
+                    }
+                ],
+                "key_terms": ["Lagos", "Accident"]
                 }
             ]
 
         }
 
+        # \uD83D\uDE1E -- emoji
+
 
     tweets = sorted(data['related_tweets'], key=lambda k: k['relevancy_score'], reverse=True)   # Sort tweets according to relevancy
+    insta = sorted(data['instagram_posts'], key=lambda k: k['relevancy_score'], reverse=True)   # Sort insta posts according to relevancy
       
-    summary = Markup('<p>*Summary about recent accident*</p>')    # Summary content
-
-    return render_template('report_layout.html', i_content=i_content, tweets=tweets, summary=summary)
+    summary = data['summary']+"\nType of injury: "+data['type_of_injury']+"\nNumber of people affected: "+str(data['num_people_affected'])+"\nTime of occurence: "+data['occur_time']    # Summary content
+    # print(summary)
+    return render_template('report_layout.html', insta=insta, tweets=tweets, summary=summary)
 
 
 @app.route("/search")
