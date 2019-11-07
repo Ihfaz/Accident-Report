@@ -11,7 +11,7 @@ app.config['SECRET_KEY'] = 'b924439ea2514672da218f4a7fba3f0e'
 @app.route("/")
 @app.route("/report")
 def report():
-    # i_content = 'assets/insta_demo.jpg'    # Instagram content
+    i_content = 'assets/insta_demo.jpg'    # Instagram content
     
     # Twitter content
 
@@ -78,7 +78,7 @@ def report():
       
     summary = data['summary']+"\nType of injury: "+data['type_of_injury']+"\nNumber of people affected: "+str(data['num_people_affected'])+"\nTime of occurence: "+data['occur_time']    # Summary content
     # print(summary)
-    return render_template('report_layout.html', insta=insta, tweets=tweets, summary=summary)
+    return render_template('report_layout.html', insta=insta, tweets=tweets, summary=summary, i_content=i_content)
 
 
 @app.route("/search")
