@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
     <title>Accident Report</title>
   </head>
   <body style="background-color: beige;">
@@ -15,35 +19,39 @@
           src="{{ url_for('static', filename='assets/accrep.JPG') }}"
           alt="logo"
           height="100"
-          width="800" 
+          width="800"
         />
       </div>
       <hr />
-      <div class="recent">
-        <h1>Recent News</h1>
-        <button>Go to location</button>
+      <div class="location">
+        <h1>Location</h1>
+        <button
+          name="bLocation"
+          onclick="window.open('https://www.latlong.net/c/?lat=6.466437&long=3.564418');"
+        >
+          Go to location
+        </button>
       </div>
       <div class="summary">
         <h1>Summary</h1>
         {% if summary %}
-          <p>{{ summary }}</p>
+        <p>{{ summary }}</p>
         {% endif %}
-        </div>
+      </div>
       <hr />
       <!-- Row containing the images from IG and tweets from twitter -->
       <div class="social_media">
         <div class="instagram">
           {% for ig in insta %}
-            <h3>{{ ig.username }}</h3>
-            {% for image in ig.images %}
-              <img 
-              class="ig-post"
-              src="{{ url_for('static', filename=i_content) }}"
-              alt="insta"
-              />
-              <p>{{ image.caption }}</p>
-            {% endfor %}
-          {% endfor %}
+          <h3>{{ ig.username }}</h3>
+          {% for image in ig.images %}
+          <img
+            class="ig-post"
+            src="{{ url_for('static', filename=i_content) }}"
+            alt="insta"
+          />
+          <p>{{ image.caption }}</p>
+          {% endfor %} {% endfor %}
           <!-- {% if i_content %}
             <img
               class="head-logo"
@@ -55,17 +63,14 @@
           {% else %}
             <h3>No content found</h3>
           {% endif %} -->
-          
         </div>
         <div class="twitter">
-
           {% for tweet in tweets %}
-            <h2>{{ tweet.username }}</h2>
-            <p>{{ tweet.message }}</p>
-            <hr />
-            <br />
+          <h2>{{ tweet.username }}</h2>
+          <p>{{ tweet.message }}</p>
+          <hr />
+          <br />
           {% endfor %}
- 
         </div>
       </div>
     </section>

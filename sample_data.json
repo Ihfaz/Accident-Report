@@ -1,23 +1,28 @@
 {
-  "id": "1234",
-  "summary": "Some summary",
-  "type_of_injury": "Severe",
+  "id": "",
+  "summary": "Accident involving 3 vehiles and 6 people injured",
+  "type_of_injury": "head",
   "num_people_affected": 3,
-  "reported_locations": ["Lagos", "Lagos-Ibadan expy"],
-  "occur_time": "1620",
+  "reported_locations": ["Lagos", "Ajah", "Otedola Bridge"],
+  "occur_time": "2019-10-28 23:50:01",
+  "geolocation": {
+    "latitude": 6.466437,
+    "longitude":  3.564418
+  },
+
   "related_tweets": [
     {
-      "username":"ihfaz98",
-      "message": "Accident on I-35 highway. Police have arrived on site.",
-      "relevancy_score": 0.0,
-      "key_terms": ["a", "b", "c"]
+      "username":"lagostraffic",
+      "message": "Just in: There has been a multiple accident involving 3 vehicles at Mega Chicken, Ajah. LCC Patrol Officers are at… https://t.co/zmPw8NSeGw",
+      "relevancy_score": 0.9,
+      "key_terms": ["3 vehicles", "Mega Chicken", "Ajah"]
 
     },
     {
-      "username":"zunayed98",
-      "message": "Car crash on highway. Seems like 4 people were injured.",
-      "relevancy_score": 1.0,
-      "key_terms": ["a", "d", "c"]
+      "username":"lagos_help",
+      "message": "Many trapped in multiple accident on Otedola bridge, Lagos #MercyXDencia Naira Marley #TachaXTitans Riri… https://t.co/afQg3gxf7m",
+      "relevancy_score": 0.6,
+      "key_terms": ["Otedola bridge"]
 
     }
 
@@ -25,19 +30,15 @@
 
   "instagram_posts": [
     {
-      "username": "ihfaz98",
-      "relevancy_score": 0.0,
+      "username": "xtrovertee",
+      "relevancy_score": 0.5,
       "images": [
         {
-          "image_url": "",
-          "caption": "Image caption 1"
-        },
-        {
-          "image_url": "",
-          "caption": "Image caption 2"
+          "image_url": "https://www.instagram.com/p/B3_YQpugcao/",
+          "caption": "So sad :/ #otedolabridge #lagosaccident #Lagos"
         }
       ],
-      "key_terms": ["s", "d"]
+      "key_terms": ["Lagos", "Accident"]
     }
   ]
 

@@ -3,9 +3,16 @@
 
 from flask import Flask, render_template, url_for, Markup, flash, redirect, request, Response
 from forms import RegistrationForm, LoginForm
+from pymongo import MongoClient
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'b924439ea2514672da218f4a7fba3f0e'
+
+# Database access
+client = MongoClient("mongodb+srv://admin:utdallas123@accidentreport-qad27.mongodb.net/test?retryWrites=true&w=majority")
+db = client['accident_reports']
+accident = db['accident']
 
 # Report page
 @app.route("/")
@@ -24,51 +31,52 @@ def report():
     
     
     # TODO -- pull this data from DB
-    data = {
-            "id": "",
-            "summary": "Accident involving 3 vehiles and 6 people injured.",
-            "type_of_injury": "head",
-            "num_people_affected": 3,
-            "reported_locations": ["Lagos", "Ajah", "Otedola Bridge"],
-            "occur_time": "2019-10-28 23:50:01",
-            "geolocation": {
-                "latitude": 6.466437,
-                "longitude":  3.564418
-            },
+    data = accident.find_one()
+    #  {
+    #         "id": "",
+    #         "summary": "Accident involving 3 vehiles and 6 people injured.",
+    #         "type_of_injury": "head",
+    #         "num_people_affected": 3,
+    #         "reported_locations": ["Lagos", "Ajah", "Otedola Bridge"],
+    #         "occur_time": "2019-10-28 23:50:01",
+    #         "geolocation": {
+    #             "latitude": 6.466437,
+    #             "longitude":  3.564418
+    #         },
 
-            "related_tweets": [
-                {
-                "username":"lagostraffic",
-                "message": "Just in: There has been a multiple accident involving 3 vehicles at Mega Chicken, Ajah. LCC Patrol Officers are at… https://t.co/zmPw8NSeGw",
-                "relevancy_score": 0.9,
-                "key_terms": ["3 vehicles", "Mega Chicken", "Ajah"]
+    #         "related_tweets": [
+    #             {
+    #             "username":"lagostraffic",
+    #             "message": "Just in: There has been a multiple accident involving 3 vehicles at Mega Chicken, Ajah. LCC Patrol Officers are at… https://t.co/zmPw8NSeGw",
+    #             "relevancy_score": 0.9,
+    #             "key_terms": ["3 vehicles", "Mega Chicken", "Ajah"]
 
-                },
-                {
-                "username":"lagos_help",
-                "message": "Many trapped in multiple accident on Otedola bridge, Lagos #MercyXDencia Naira Marley #TachaXTitans Riri… https://t.co/afQg3gxf7m",
-                "relevancy_score": 0.6,
-                "key_terms": ["Otedola bridge"]
+    #             },
+    #             {
+    #             "username":"lagos_help",
+    #             "message": "Many trapped in multiple accident on Otedola bridge, Lagos #MercyXDencia Naira Marley #TachaXTitans Riri… https://t.co/afQg3gxf7m",
+    #             "relevancy_score": 0.6,
+    #             "key_terms": ["Otedola bridge"]
 
-                }
+    #             }
 
-            ],
+    #         ],
 
-            "instagram_posts": [
-                {
-                "username": "xtrovertee",
-                "relevancy_score": 0.5,
-                "images": [
-                    {
-                    "image_url": "https://www.instagram.com/p/B3_YQpugcao/",
-                    "caption": "So sad  #otedolabridge #lagosaccident #Lagos"
-                    }
-                ],
-                "key_terms": ["Lagos", "Accident"]
-                }
-            ]
+    #         "instagram_posts": [
+    #             {
+    #             "username": "xtrovertee",
+    #             "relevancy_score": 0.5,
+    #             "images": [
+    #                 {
+    #                 "image_url": "https://www.instagram.com/p/B3_YQpugcao/",
+    #                 "caption": "So sad  #otedolabridge #lagosaccident #Lagos"
+    #                 }
+    #             ],
+    #             "key_terms": ["Lagos", "Accident"]
+    #             }
+    #         ]
 
-        }
+    #     }
 
         # \uD83D\uDE1E -- emoji
 
@@ -114,8 +122,10 @@ def login():
 def upload_data():
     # data = request.args.get('data')
     data = request.get_json('data')
-    return f"<h1>DATA = {data}</h1>"
     # return Response(200)
+    accident.insert_one(data)  
+    client.close()
+    return f"<h1>DATA = {data}</h1>"
 
 
 if __name__ == '__main__':
