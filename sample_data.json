@@ -12,15 +12,19 @@
 
   "related_tweets": [
     {
-      "username":"lagostraffic",
-      "message": "Just in: There has been a multiple accident involving 3 vehicles at Mega Chicken, Ajah. LCC Patrol Officers are at… https://t.co/zmPw8NSeGw",
+      "username":"dfrtraffic",
+      "name":"Dallas Fire Rescue Traffic",
+      "message": "Motor Vehicle Accident | SINGLETON BLVD / AMONETTE ST | EN45; RE45 | 450035 | 18:48 | A | https://t.co/FBRWciko1Q",
+      "profile_image":"https://pbs.twimg.com/profile_images/525487145616560128/EkkgRiIw_normal.png",
       "relevancy_score": 0.9,
       "key_terms": ["3 vehicles", "Mega Chicken", "Ajah"]
 
     },
     {
-      "username":"lagos_help",
-      "message": "Many trapped in multiple accident on Otedola bridge, Lagos #MercyXDencia Naira Marley #TachaXTitans Riri… https://t.co/afQg3gxf7m",
+      "username":"dfrtraffic",
+      "name":"Dallas Fire Rescue Traffic",
+      "message": "Motor Vehicle Accident | YEWPON AVE / ADELAIDE DR | EN15; EN54; RE25 | 250344 | 18:42 | A | https://t.co/xKv0d3ph3q",
+      "profile_image":"https://pbs.twimg.com/profile_images/525487145616560128/EkkgRiIw_normal.png",
       "relevancy_score": 0.6,
       "key_terms": ["Otedola bridge"]
 

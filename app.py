@@ -34,54 +34,6 @@ def report():
     data = accident.find_one()
     if data is None:
         return "<h1>Error 404: Content Not Found</h1>"
-    
-    #  {
-    #         "id": "",
-    #         "summary": "Accident involving 3 vehiles and 6 people injured.",
-    #         "type_of_injury": "head",
-    #         "num_people_affected": 3,
-    #         "reported_locations": ["Lagos", "Ajah", "Otedola Bridge"],
-    #         "occur_time": "2019-10-28 23:50:01",
-    #         "geolocation": {
-    #             "latitude": 6.466437,
-    #             "longitude":  3.564418
-    #         },
-
-    #         "related_tweets": [
-    #             {
-    #             "username":"lagostraffic",
-    #             "message": "Just in: There has been a multiple accident involving 3 vehicles at Mega Chicken, Ajah. LCC Patrol Officers are at… https://t.co/zmPw8NSeGw",
-    #             "relevancy_score": 0.9,
-    #             "key_terms": ["3 vehicles", "Mega Chicken", "Ajah"]
-
-    #             },
-    #             {
-    #             "username":"lagos_help",
-    #             "message": "Many trapped in multiple accident on Otedola bridge, Lagos #MercyXDencia Naira Marley #TachaXTitans Riri… https://t.co/afQg3gxf7m",
-    #             "relevancy_score": 0.6,
-    #             "key_terms": ["Otedola bridge"]
-
-    #             }
-
-    #         ],
-
-    #         "instagram_posts": [
-    #             {
-    #             "username": "xtrovertee",
-    #             "relevancy_score": 0.5,
-    #             "images": [
-    #                 {
-    #                 "image_url": "https://www.instagram.com/p/B3_YQpugcao/",
-    #                 "caption": "So sad  #otedolabridge #lagosaccident #Lagos"
-    #                 }
-    #             ],
-    #             "key_terms": ["Lagos", "Accident"]
-    #             }
-    #         ]
-
-    #     }
-
-        # \uD83D\uDE1E -- emoji
 
 
     tweets = sorted(data['related_tweets'], key=lambda k: k['relevancy_score'], reverse=True)   # Sort tweets according to relevancy

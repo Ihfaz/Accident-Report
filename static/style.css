@@ -29,10 +29,25 @@
   overflow-y: auto;
 }
 
+.twitter-head {
+  line-height: 2px;
+  margin-bottom: 5px;
+  vertical-align: middle;
+}
+
+.t-pp {
+  border-radius: 50%;
+  vertical-align: middle;
+  width: 45px;
+  height: 45px;
+  float: left;
+  margin-right: 10px;
+}
+
 /* Clear floats after image containers */
 .social_media {
   display: flex;
   height: 500px;
   width: 98%;
-  padding: 5px;
+  padding: 10px;
 }

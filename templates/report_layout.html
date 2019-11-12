@@ -37,45 +37,52 @@
         <br />
       </div>
       <hr />
-      <!-- Row containing the images from IG and tweets from twitter -->
-      <div class="social_media">
-        <div class="instagram">
-          <h1>Instagram Posts</h1>
-          <hr />
-          {% for ig in insta %}
+    </section>
+    <!-- Row containing the images from IG and tweets from twitter -->
+    <div class="social_media">
+      <div class="instagram">
+        <h1>Instagram Posts</h1>
+        <hr />
+        {% for ig in insta %}
           <h3>{{ ig.username }}</h3>
           {% for image in ig.images %}
-          <img
-            class="ig-post"
-            src="{{ url_for('static', filename=i_content) }}"
-            alt="insta"
-          />
-          <p>{{ image.caption }}</p>
-          {% endfor %} {% endfor %}
-          <!-- {% if i_content %}
             <img
-              class="head-logo"
-              
+              class="ig-post"
               src="{{ url_for('static', filename=i_content) }}"
               alt="insta"
-              
             />
-          {% else %}
-            <h3>No content found</h3>
-          {% endif %} -->
-        </div>
-        <div class="twitter">
-          <h1>Tweets</h1>
-          <hr />
-          {% for tweet in tweets %}
-          <h3>{{ tweet.username }}</h3>
-          <p>{{ tweet.message }}</p>
-          <br />
+            <p>{{ image.caption }}</p>
           {% endfor %}
-        </div>
+        {% endfor %}
+        <!-- {% if i_content %}
+          <img
+            class="head-logo"
+            
+            src="{{ url_for('static', filename=i_content) }}"
+            alt="insta"
+            
+          />
+        {% else %}
+          <h3>No content found</h3>
+        {% endif %} -->
       </div>
-    </section>
-
+      <div class="twitter">
+        <h1>Tweets</h1>
+        <hr />
+        {% for tweet in tweets %}
+        <div class="twitter-head">
+          <img class="t-pp"
+            src="{{ tweet.profile_image }}"
+            alt="T"
+          />
+          <h3>{{ tweet.name }}</h3>
+          <h5>@{{ tweet.username }}</h5>
+        </div>
+        <p>{{ tweet.message }}</p>
+        <br />
+        {% endfor %}
+      </div>
+    </div>
     <script src="./app.js"></script>
   </body>
 </html>
