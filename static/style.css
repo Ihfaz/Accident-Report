@@ -27,19 +27,21 @@
   padding: 15px;
   margin-left: 15px;
   overflow-y: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .twitter-head {
   line-height: 2px;
   margin-bottom: 5px;
   vertical-align: middle;
+  text-align: left;
 }
 
 .t-pp {
   border-radius: 50%;
   vertical-align: middle;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   float: left;
   margin-right: 10px;
 }

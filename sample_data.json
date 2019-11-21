@@ -1,5 +1,5 @@
 {
-  "id": "",
+  "_id": "123",
   "summary": "Accident involving 3 vehiles and 6 people injured",
   "type_of_injury": "head",
   "num_people_affected": 3,
@@ -16,18 +16,16 @@
       "name":"Dallas Fire Rescue Traffic",
       "message": "Motor Vehicle Accident | SINGLETON BLVD / AMONETTE ST | EN45; RE45 | 450035 | 18:48 | A | https://t.co/FBRWciko1Q",
       "profile_image":"https://pbs.twimg.com/profile_images/525487145616560128/EkkgRiIw_normal.png",
-      "relevancy_score": 0.9,
-      "key_terms": ["3 vehicles", "Mega Chicken", "Ajah"]
-
+      "tweet_url":"https://twitter.com/dfrtraffic/status/1196028211601137664",
+      "relevancy_score": 0.9
     },
     {
-      "username":"dfrtraffic",
-      "name":"Dallas Fire Rescue Traffic",
-      "message": "Motor Vehicle Accident | YEWPON AVE / ADELAIDE DR | EN15; EN54; RE25 | 250344 | 18:42 | A | https://t.co/xKv0d3ph3q",
-      "profile_image":"https://pbs.twimg.com/profile_images/525487145616560128/EkkgRiIw_normal.png",
-      "relevancy_score": 0.6,
-      "key_terms": ["Otedola bridge"]
-
+      "username":"belindacarter86",
+      "name":"Belinda Carter",
+      "message": "Car Accident Scams https://t.co/MtE7GXmk3l https://t.co/Hef2KZxeKS",
+      "profile_image":"https://pbs.twimg.com/profile_images/1167294956752343040/lz03InAV_normal.jpg",
+      "tweet_url":"https://twitter.com/dfrtraffic/status/1196028211601137664",
+      "relevancy_score": 0.6
     }
 
   ],
@@ -41,9 +39,9 @@
           "image_url": "https://www.instagram.com/p/B3_YQpugcao/",
           "caption": "So sad :/ #otedolabridge #lagosaccident #Lagos"
         }
-      ],
-      "key_terms": ["Lagos", "Accident"]
+      ]
     }
-  ]
+  ],
 
+  "key_terms": ["Lagos", "Accident", "3 vehicles", "Mega Chicken", "Ajah", "Otedola bridge"]
 }
