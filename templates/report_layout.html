@@ -1,60 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-    <title>Accident Report</title>
-  </head>
-  <body style="background-color: beige;">
-    <section class="header">
-      <div class="main_body">
-        <img
-          class="logo"
-          src="{{ url_for('static', filename='assets/accrep.JPG') }}"
-          alt="logo"
-          height="100"
-          width="800"
-        />
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+  <title>Accident Report</title>
+  <style>
+    h1 {
+      color: rgb(255, 255, 255);
+    }
+  </style>
+</head>
+
+<body style="background-color: #92a8d1;">
+
+  <style>
+    h3 {
+      color: rgb(255, 255, 255);
+    }
+
+    h4 {
+      color: rgb(255, 255, 255);
+    }
+  </style>
+  <section class="header">
+    <div class="main_body">
+      <img class="logo" src="{{ url_for('static', filename='assets/accrep.JPG') }}" alt="logo" height="100"
+        width="800" />
+    </div>
+    <hr />
+    <div class="location">
+      <h1>Location</h1>
+      {% if loc_link %}
+      <button name="bLocation" onclick="{{ loc_link }}">
+        Go to location
+      </button>
+      {% endif %}
+      <!-- <iframe
+          width="360"
+          height="400"
+          frameborder="0"
+          style="border:0;width:100%"
+          src="**YOUR LINK HERE**"
+          allowfullscreen=""
+        ></iframe> -->
+    </div>
+    <div class="summary">
+      <h1>Summary</h1>
+      {% if summary %}
+      <p class="summary-content">{{ summary }}</p>
+      {% endif %}
+      <br />
+    </div>
+    <hr />
+  </section>
+  <!-- Row containing the images from IG and tweets from twitter -->
+  <div class="social_media">
+    <div class="instagram" style="background-color: rgb(35,31,32);">
+
+      <h1>Instagram</h1>
       <hr />
-      <div class="location">
-        <h1>Location</h1>
-        {% if loc_link %}
-          <button name="bLocation" onclick="{{ loc_link }}">Go to location</button>
-        {% endif %}
-      </div>
-      <div class="summary">
-        <h1>Summary</h1>
-        {% if summary %}
-        <p class="summary-content">{{ summary }}</p>
-        {% endif %}
-        <br />
-      </div>
-      <hr />
-    </section>
-    <!-- Row containing the images from IG and tweets from twitter -->
-    <div class="social_media">
-      <div class="instagram">
-        <h1>Instagram Posts</h1>
-        <hr />
-        {% for ig in insta %}
-          <h3>{{ ig.username }}</h3>
-          {% for image in ig.images %}
-            <img
-              class="ig-post"
-              src="{{ url_for('static', filename=i_content) }}"
-              alt="insta"
-            />
-            <p>{{ image.caption }}</p>
-          {% endfor %}
-        {% endfor %}
-        <!-- {% if i_content %}
+      {% for ig in insta %}
+      <h3>{{ ig.username }}</h3>
+      {% for image in ig.images %}
+      <img class="ig-post" src="{{ url_for('static', filename=i_content) }}" alt="insta" />
+      <p>{{ image.caption }}</p>
+      {% endfor %} {% endfor %}
+      <!-- {% if i_content %}
           <img
             class="head-logo"
             
@@ -65,24 +79,25 @@
         {% else %}
           <h3>No content found</h3>
         {% endif %} -->
-      </div>
-      <div class="twitter">
-        <h1>Tweets</h1>
-        <hr />
-        {% for tweet in tweets %}
-        <div class="twitter-head">
-          <img class="t-pp"
-            src="{{ tweet.profile_image }}"
-            alt="T"
-          />
-          <h3>{{ tweet.name }}</h3>
-          <p>@{{ tweet.username }}</p>
-        </div>
-        <p>{{ tweet.message }}</p>
-        <br />
-        {% endfor %}
-      </div>
     </div>
-    <script src="./app.js"></script>
-  </body>
+    <div class="twitter" style="background-color: rgb(56,161,243);">
+      <h1>Tweets</h1>
+      <hr />
+      {% for tweet in tweets %}
+      <div class="twitter-head" onclick="window.open( '{{ tweet.tweet_url }}' )" target=" _blank">
+        <img class="t-pp" src="{{ tweet.profile_image }}" alt="T" />
+        <h3>{{ tweet.name }}</h3>
+        <p>@{{ tweet.username }}</p>
+        <!-- <p>@onclick="location.href='url'"</p> -->
+      </div>
+
+      <p>{{ tweet.message }}</p>
+      <!-- <p><a href="{{ tweet.tweet_url }}"></p> -->
+      <br />
+      {% endfor %}
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+
 </html>

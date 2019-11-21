@@ -13,7 +13,6 @@
 .instagram {
   width: wrap-content;
   height: 100%;
-  background-color: white;
   padding: 15px;
   margin-right: 15px;
   overflow-y: auto;
@@ -23,11 +22,12 @@
   flex-grow: 1;
   width: 50%;
   height: 100%;
-  background-color: white;
+
   padding: 15px;
   margin-left: 15px;
   overflow-y: auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 .twitter-head {
