@@ -10,14 +10,18 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'b924439ea2514672da218f4a7fba3f0e'
 
 # Database access
-client = MongoClient("mongodb+srv://admin:utdallas123@accidentreport-qad27.mongodb.net/test?retryWrites=true&w=majority")
-db = client['accident_reports']
-accident = db['accident']
+# client = MongoClient("mongodb+srv://admin:utdallas123@accidentreport-qad27.mongodb.net/test?retryWrites=true&w=majority")
+# db = client['accident_reports']
+# accident = db['accident']
 
 # Report page
 @app.route("/")
 @app.route("/report")
 def report():
+    client = __get_mongo_client
+    db = client['accident_reports']
+    accident = db['accident']
+
     i_content = 'assets/insta_demo.jpg'    # Instagram content
     
     # Twitter content
@@ -45,6 +49,7 @@ def report():
     
     loc_link = "window.open('https://www.latlong.net/c/?lat=%s&long=%s');" %(lat, long)
 
+    client.close
     return render_template('report_layout.html', insta=insta, tweets=tweets, summary=summary, i_content=i_content, loc_link=loc_link)
 
 
@@ -80,6 +85,10 @@ def login():
 
 @app.route('/upload', methods=['POST'])
 def upload_data():
+    client = __get_mongo_client
+    db = client['accident_reports']
+    accident = db['accident']
+
     # data = request.args.get('data')
     data = request.get_json('data')
     # return Response(200)
@@ -99,15 +108,15 @@ def upload_data():
     return ""
 
 
-# def __get_mongo_client():
-#     MONGO_SERVER_IP = "172.29.100.22"
-#     MONGO_PORT = "3154"
-#     MONGO_USER = "event_reader"
-#     MONGO_PSWD = "dml2016"
-#     NUM_ARTICLES = 1000
+def __get_mongo_client():
+    MONGO_SERVER_IP = "172.29.100.22"
+    MONGO_PORT = "3154"
+    MONGO_USER = "event_reader"
+    MONGO_PSWD = "dml2016"
+    NUM_ARTICLES = 1000
 
-#     password = urllib.quote_plus(MONGO_PSWD)
-#     return MongoClient('mongodb://' + MONGO_USER + ':' + password + '@' + MONGO_SERVER_IP + ":" + MONGO_PORT)
+    password = urllib.quote_plus(MONGO_PSWD)
+    return MongoClient('mongodb://' + MONGO_USER + ':' + password + '@' + MONGO_SERVER_IP + ":" + MONGO_PORT)
 
 
 if __name__ == '__main__':
