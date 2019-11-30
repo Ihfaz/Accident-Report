@@ -92,6 +92,10 @@
       </div>
 
       <p>{{ tweet.message }}</p>
+      {% if tweet.media_url %}
+        <img class="t-m" src="{{ tweet.media_url }}" alt="T" />
+      {% endif %}
+      
       <!-- <p><a href="{{ tweet.tweet_url }}"></p> -->
       <br />
       {% endfor %}

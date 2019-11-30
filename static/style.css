@@ -31,7 +31,7 @@
 }
 
 .twitter-head {
-  line-height: 2px;
+  line-height: 5px;
   margin-bottom: 5px;
   vertical-align: middle;
   text-align: left;
@@ -39,9 +39,9 @@
 
 .t-pp {
   border-radius: 50%;
-  vertical-align: middle;
-  width: 40px;
-  height: 40px;
+  vertical-align: top;
+  width: 38px;
+  height: 38px;
   float: left;
   margin-right: 10px;
 }

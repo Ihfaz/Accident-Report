@@ -40,7 +40,10 @@ def report():
     insta = sorted(data['instagram_posts'], key=lambda k: k['relevancy_score'], reverse=True)   # Sort insta posts according to relevancy
       
     summary = data['summary']+"\nType of injury: "+data['type_of_injury']+"\nNumber of people affected: "+str(data['num_people_affected'])+"\nTime of occurence: "+data['occur_time']    # Summary content
-    loc_link = f"window.open('https://www.latlong.net/c/?lat={data['geolocation']['latitude']}&long={data['geolocation']['longitude']}');"
+    lat = data['geolocation']['latitude']
+    long = data['geolocation']['longitude']
+    
+    loc_link = "window.open('https://www.latlong.net/c/?lat=%s&long=%s');" %(lat, long)
 
     return render_template('report_layout.html', insta=insta, tweets=tweets, summary=summary, i_content=i_content, loc_link=loc_link)
 
@@ -53,8 +56,9 @@ def search():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+    username = form.username.data
     if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}!', 'success')
+        flash('Account created for %s!' %username, 'success')
         return redirect(url_for('login'))
 
     return render_template('register.html', title='Registration', form=form)
@@ -79,9 +83,31 @@ def upload_data():
     # data = request.args.get('data')
     data = request.get_json('data')
     # return Response(200)
-    accident.insert_one(data)  
+
+    newID = data['_id']
+    # If the document already exists
+    if accident.count_documents({ '_id': newID }, limit = 1) != 0:
+        accident.update({'_id': newID}, {'$set': data})
+        return "<h1>UPDATED -- ID: %s</h1>" %newID
+    else:
+        accident.insert_one(data)
+        client.close()
+        return "<h1>NEW ENTRY -- ID: %s</h1>" %newID
+  
+        
     client.close()
-    return f"<h1>DATA = {data}</h1>"
+    return ""
+
+
+# def __get_mongo_client():
+#     MONGO_SERVER_IP = "172.29.100.22"
+#     MONGO_PORT = "3154"
+#     MONGO_USER = "event_reader"
+#     MONGO_PSWD = "dml2016"
+#     NUM_ARTICLES = 1000
+
+#     password = urllib.quote_plus(MONGO_PSWD)
+#     return MongoClient('mongodb://' + MONGO_USER + ':' + password + '@' + MONGO_SERVER_IP + ":" + MONGO_PORT)
 
 
 if __name__ == '__main__':
