@@ -24,6 +24,8 @@ def report():
     db = client['accident_reports']
     accident = db['accident']
 
+    ID = str(request.args.get('id'))	# Parameter id
+
     i_content = 'assets/insta_demo.jpg'    # Instagram content
     
     # Twitter content
@@ -37,7 +39,9 @@ def report():
     
     
     # TODO -- pull this data from DB
-    data = accident.find_one()
+    #data = accident.find_one()
+    data = list(accident.find({'_id': ID}))[0]
+    #print(data)
     if data is None:
         return "<h1>Error 404: Content Not Found</h1>"
 
@@ -47,9 +51,9 @@ def report():
       
     summary = data['summary']+"\nType of injury: "+data['type_of_injury']+"\nNumber of people affected: "+str(data['num_people_affected'])+"\nTime of occurence: "+data['occur_time']    # Summary content
     lat = data['geolocation']['latitude']
-    long = data['geolocation']['longitude']
+    lon = data['geolocation']['longitude']
     
-    loc_link = "window.open('https://www.latlong.net/c/?lat=%s&long=%s');" %(lat, long)
+    loc_link = "window.open('https://www.latlong.net/c/?lat=%s&long=%s');" %(lat, lon)
 
     client.close
     return render_template('report_layout.html', insta=insta, tweets=tweets, summary=summary, i_content=i_content, loc_link=loc_link)
