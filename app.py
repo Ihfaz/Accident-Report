@@ -4,6 +4,8 @@
 from flask import Flask, render_template, url_for, Markup, flash, redirect, request, Response
 from forms import RegistrationForm, LoginForm
 from pymongo import MongoClient
+from flask import jsonify
+import json
 
 app = Flask(__name__)
 
@@ -15,10 +17,10 @@ app.config['SECRET_KEY'] = 'b924439ea2514672da218f4a7fba3f0e'
 # accident = db['accident']
 
 # Report page
-@app.route("/")
+#@app.route("/")
 @app.route("/report")
 def report():
-    client = __get_mongo_client
+    client = __get_mongo_client()
     db = client['accident_reports']
     accident = db['accident']
 
@@ -83,30 +85,33 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
-@app.route('/upload', methods=['POST'])
+@app.route('/upload', methods=["POST"])
 def upload_data():
-    client = __get_mongo_client
+    client = __get_mongo_client()
     db = client['accident_reports']
     accident = db['accident']
 
-    # data = request.args.get('data')
+    data = request.data
+    #data = json.loads(data)
     data = request.get_json('data')
     # return Response(200)
 
     newID = data['_id']
     # If the document already exists
-    if accident.count_documents({ '_id': newID }, limit = 1) != 0:
+    if accident.find({ '_id': newID}).count() > 0:
         accident.update({'_id': newID}, {'$set': data})
+        #return jsonify(success=True) #have to return a response
         return "<h1>UPDATED -- ID: %s</h1>" %newID
     else:
         accident.insert_one(data)
         client.close()
+	#return jsonify(success=True) #have to return a response
         return "<h1>NEW ENTRY -- ID: %s</h1>" %newID
   
         
-    client.close()
+    client.close()#never reaches this statement
+    #return jsonify(success=True) #have to return a response
     return ""
-
 
 def __get_mongo_client():
     MONGO_SERVER_IP = "172.29.100.22"
@@ -115,9 +120,9 @@ def __get_mongo_client():
     MONGO_PSWD = "dml2016"
     NUM_ARTICLES = 1000
 
-    password = urllib.quote_plus(MONGO_PSWD)
-    return MongoClient('mongodb://' + MONGO_USER + ':' + password + '@' + MONGO_SERVER_IP + ":" + MONGO_PORT)
-
+    password = MONGO_PSWD
+    #return MongoClient('mongodb://' + MONGO_USER + ':' + password + '@' + MONGO_SERVER_IP + ":" + MONGO_PORT)
+    return MongoClient(port=3154)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=False)
